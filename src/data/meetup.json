@@ -1,0 +1,19 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "fullName": "Netanel",
+      "email": "netanel_shimoni@webiks.com",
+      "password": "123",
+      "admin": true
+    },{
+      "id": 2,
+      "fullName": "Ori",
+      "email": "netanel_shimoni@webiks.com",
+      "password": "456",
+      "admin": false
+    }
+  ]
+}
+
+
