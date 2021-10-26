@@ -19,10 +19,10 @@ const initState ={
 
 const reducer  = (state:Istore =initState , action:IAction) :Istore =>  {
     switch (action.type) {
-        case ADD_USER:
+        case Actions.ADD_USER:
             console.log("ADD USER !!!")
            return {...state, users: [...state.users, action.payload]} as Istore;
-        case UPDATE_MODE:
+        case Actions.UPDATE_MODE:
             return {...state, userMode: action.payload} as Istore ;
         default:
             console.log("default!!")

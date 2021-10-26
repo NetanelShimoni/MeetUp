@@ -10,12 +10,11 @@ import * as Actions from "./actionsType"
 export const addUser=(newUser: IUser)=> async (dispatch:Dispatch) => {
     console.log("newUser is:",newUser)
     try {
-
-        await axios.post('http://localhost:3001/add-user', newUser)
-        console.log("after axsioss!!")
+      const res=  await axios.post('http://localhost:3001/add-user', newUser).then(function (result){console.log(result.status)
+      })
         dispatch(
             {
-                type: ADD_USER,
+                type: Actions.ADD_USER,
                 payload: newUser
             })
     }catch (e) {

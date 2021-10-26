@@ -39,25 +39,24 @@ app.get('/all-user' ,(req,res)=> {
 })
 
 app.post('/add-user',(req,res) => {
-    res.status(200)
-
-    const user = new User ({
-        fullName:"aaa",
-        email: "aaaaa",
-        password: "aaaaa",
-        isAdmin: false,
-        meetUps:[],
-        ownMeetUp:[]
-    });
 
     // const user = new User ({
-    //     fullName:req.body.fullName,
-    //     email: req.body.email,
-    //     password: req.body.password,
-    //     isAdmin: req.body.isAdmin,
-    //     meetUps:req.body.meetUps,
-    //     ownMeetUp:req.body.ownMeetUp
+    //     fullName:"aaa",
+    //     email: "aaaaa",
+    //     password: "aaaaa",
+    //     isAdmin: false,
+    //     meetUps:[],
+    //     ownMeetUp:[]
     // });
+
+    const user = new User ({
+        fullName:req.body.fullName,
+        email: req.body.email,
+        password: req.body.password,
+        isAdmin: req.body.isAdmin,
+        meetUps:req.body.meetUps,
+        ownMeetUp:req.body.ownMeetUp
+    });
     user.save()
         .then((result) => {
         res.send(res.status(200))
