@@ -14,12 +14,10 @@ import Home from "./comps/home";
 import Login from "./comps/signUp";
 import Create from "./comps/create";
 import {connect, useDispatch, useSelector} from "react-redux";
-import {Istore} from "./store/interfacses";
+import {Istore, IUser} from "./store/interfacses";
 import {stat} from "fs";
 import SignUp from "./comps/signUp";
 import {Alert} from "@mui/material";
-import {addUser,} from "./actions/userActions";
-import { IUser } from './actions/userActionType';
 
 const App : React.FC = () => {
 //console.log("stateSelctore",state.allUsers)
@@ -28,18 +26,18 @@ const App : React.FC = () => {
     const dispatch = useDispatch();
     const onAddUser = (newUser:IUser) => {
         console.log("beforedispactj")
-        dispatch(addUser(newUser))
+       // dispatch(addUser(newUser))
     }
-     const addUser  =  (payload: IUser) => {
-        //  const result: AxiosResponse<Array<IUser>> = await axios.get('http://localhost:3001/all-user',);
-        // if( result.data.map((user)=>payload.email!=user.email)){
-
-        //const p = await axios.post('http://localhost:3001/add-user', {data:payload});
-
-       dispatch(addNewUser)
-
-
-    };
+    //  const addUser  =  (payload: IUser) => {
+    //     //  const result: AxiosResponse<Array<IUser>> = await axios.get('http://localhost:3001/all-user',);
+    //     // if( result.data.map((user)=>payload.email!=user.email)){
+    //
+    //     //const p = await axios.post('http://localhost:3001/add-user', {data:payload});
+    //
+    //    dispatch(addNewUser)
+    //
+    //
+    // };
 
 
     return(
@@ -52,7 +50,7 @@ const App : React.FC = () => {
                   {/*<Create openPopup={openPopup} SetopenPopup={openPopup}/>*/}
               </Route>
           <Route path='/signup' component={SignUp} exact >
-              <SignUp addUser={addUser} />
+              <SignUp />
               {/*<ul>*/}
               {/*    {allUser.map((user:IUser) => {*/}
               {/*        console.log(user.email)*/}
@@ -63,8 +61,6 @@ const App : React.FC = () => {
           </Route>
 
 
-
-            
 
 
 

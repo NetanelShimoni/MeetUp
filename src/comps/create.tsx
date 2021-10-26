@@ -14,11 +14,8 @@ import {ExitToApp, Send} from "@material-ui/icons";
 import {Alert, Typography} from "@mui/material";
 import React, {useEffect, useRef, useState} from "react";
 import {Link, useHistory} from "react-router-dom";
-import {IMeetUp} from "../actions/meetUpActionType";
 import {useSelector} from "react-redux";
-import {IUser} from "../actions/userActionType";
-import {GetUser} from "../actions/userActions";
-import {AddMeetUp} from "../actions/meetUpActions";
+import { IUser, IMeetUp} from "../store/interfacses";
 
 
 
@@ -91,7 +88,7 @@ const Create : React.FC<Props> = (props: Props )  => {
 
 
                 <Button type="submit"  endIcon={<Send/>} color="primary"  variant="contained" style={{display: "flex" ,left: "890px"}}
-                        onClick={(e)=> AddMeetUp(meetUp)} > Post</Button>
+                        onClick={(e)=>console.log("post")} > Post</Button>
                 <Button   endIcon={<ExitToApp/>} onClick={()=> props.SetopenPopup(!props.openPopup)} variant="contained" color="primary"  style={{color:"white",fontWeight: "bold" ,
                     background:"red",position:"absolute", left: "900px" ,top:"40px"}}> X</Button>
 

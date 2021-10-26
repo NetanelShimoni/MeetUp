@@ -2,6 +2,9 @@ const express = require("express");
 const app = express();
 const mongoose = require('mongoose');
 const User = require('./models/user')
+const bodyParser = require("body-parser");
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 const cors = require('cors')
 app.use(cors({
     origin:"http://localhost:3000"
@@ -24,6 +27,7 @@ app.get("/",function (reqq,res){
 })
 
 app.get('/all-user' ,(req,res)=> {
+    console.log("dddddddd")
     User.find()
         .then((result)=> {
             res.send(result)
@@ -35,24 +39,32 @@ app.get('/all-user' ,(req,res)=> {
 })
 
 app.post('/add-user',(req,res) => {
-    console.log(req.body,"netanel");
-
     res.status(200)
+
+    const user = new User ({
+        fullName:"aaa",
+        email: "aaaaa",
+        password: "aaaaa",
+        isAdmin: false,
+        meetUps:[],
+        ownMeetUp:[]
+    });
+
     // const user = new User ({
-    //     fullName:'shimoni shimoni',
-    //     email: 'shimoni_shimoni@webiks.com',
-    //     password: '1234444',
-    //     isAdmin: false,
-    //     meetUps:[],
-    //     ownMeetUp:[]
+    //     fullName:req.body.fullName,
+    //     email: req.body.email,
+    //     password: req.body.password,
+    //     isAdmin: req.body.isAdmin,
+    //     meetUps:req.body.meetUps,
+    //     ownMeetUp:req.body.ownMeetUp
     // });
-    // user.save()
-    //     .then((result) => {
-    //     res.send(result)
-    // } )
-    //     .catch((err)=>{
-    //         console.log(err)
-    //     })
+    user.save()
+        .then((result) => {
+        res.send(res.status(200))
+    } )
+        .catch((err)=>{
+            console.log(err)
+        })
 })
 
 // , function (){

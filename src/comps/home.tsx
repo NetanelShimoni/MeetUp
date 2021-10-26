@@ -7,7 +7,7 @@ import Button from 'material-ui/Button';
 import Button from "@mui/material/Button";
 import { AddCircleOutlined } from "@material-ui/icons";
 import Create from "./create";
-import {IMeetUp} from "../actions/meetUpActionType";
+import { IMeetUp } from "../store/interfacses";
 
 const Home: React.FC = () => {
   const [meetUps, setMeetUps] = useState<Array<IMeetUp>>();

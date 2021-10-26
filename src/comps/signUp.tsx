@@ -5,9 +5,11 @@ import { Typography } from "@mui/material";
 import { purple } from "@material-ui/core/colors";
 import shadows from "@material-ui/core/styles/shadows";
 import { useDispatch, useSelector } from "react-redux";
-import { addUser} from "../actions/userActions";
 import axios, {AxiosResponse} from "axios";
-import { IUser } from "../actions/userActionType";
+import {EUsermode, IUser} from "../store/interfacses";
+import {store} from "../store/store";
+import {ADD_USER, UPDATE_MODE} from "../store/actionsType";
+import {addUser} from "../store/actions";
 
 const useStyles = makeStyles({
   mainContainer: {
@@ -40,10 +42,10 @@ const useStyles = makeStyles({
   },
 });
 
-export interface NewUserInputProps {
-  addUser(user: IUser): void;
-}
-const SignUp: React.FC<NewUserInputProps> = ({ addUser }) => {
+// export interface NewUserInputProps {
+//   addUser(user: IUser): void;
+// }
+const SignUp: React.FC = () => {
   const dispatch = useDispatch();
   const ref = useRef();
   const classes = useStyles();
@@ -63,11 +65,19 @@ const SignUp: React.FC<NewUserInputProps> = ({ addUser }) => {
   const [enteredTextPassword, setenteredTextPassword] = useState("");
   const [isAdmin, setISAdmin] = useState(false);
 
-  const onAddUserClick =  (event: React.MouseEvent<HTMLButtonElement>) => {
+  const   onAddUserClick =    (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     console.log("user is: ", user);
     // dispatch({type:"ADD_USER",payload:{fullName:"shahar",email:"shahar@webiks.com",password:"123445",admin:true}})
-     addUser(user);
+       dispatch(addUser(user));
+    //store.dispatch({type:ADD_USER,payload:user})
+   // dispatch(await addUser(user))
+    console.log(store.getState())
+
+    if (isAdmin) {
+      store.dispatch({type: UPDATE_MODE, payload: EUsermode.admin})
+      console.log(store.getState())
+    }
     setenteredTextPassword("");
     setenteredTextUserName("");
     setenteredTextEmail("");
@@ -83,7 +93,7 @@ const SignUp: React.FC<NewUserInputProps> = ({ addUser }) => {
   };
   // @ts-ignore
   useEffect(async () => {
-      const result: AxiosResponse<Array<IUser>> = await axios.get('http://localhost:3001/all-user',);
+       const result: AxiosResponse<Array<IUser>> = await axios.get('http://localhost:3001/all-user',);
     console.log("netnael ",result.data)
   },[]);
 
