@@ -16,15 +16,13 @@ import Create from "./comps/create";
 import {connect, useDispatch, useSelector} from "react-redux";
 import {Istore} from "./store/interfacses";
 import {stat} from "fs";
-import IUser from "./interfaces/IUser";
 import SignUp from "./comps/signUp";
 import {Alert} from "@mui/material";
-import {addUser} from "./store/actions";
-import IUsers from "./interfaces/IUsers";
+import {addUser,} from "./actions/userActions";
+import { IUser } from './actions/userActionType';
 
 const App : React.FC = () => {
 //console.log("stateSelctore",state.allUsers)
-    const allUser  = useSelector<IUsers,IUsers["allUsers"]>((state) =>state.allUsers )
     const [openPopup , setOpenPopup] = useState(false);
 
     const dispatch = useDispatch();
@@ -32,7 +30,16 @@ const App : React.FC = () => {
         console.log("beforedispactj")
         dispatch(addUser(newUser))
     }
+     const addUser  =  (payload: IUser) => {
+        //  const result: AxiosResponse<Array<IUser>> = await axios.get('http://localhost:3001/all-user',);
+        // if( result.data.map((user)=>payload.email!=user.email)){
 
+        //const p = await axios.post('http://localhost:3001/add-user', {data:payload});
+
+       dispatch(addNewUser)
+
+
+    };
 
 
     return(

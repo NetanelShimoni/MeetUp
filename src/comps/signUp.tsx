@@ -1,13 +1,13 @@
-import React, { useRef, useState } from "react";
+import React, {useEffect, useRef, useState} from "react";
 import { Link } from "react-router-dom";
 import { makeStyles, Paper, TextField } from "@material-ui/core";
 import { Typography } from "@mui/material";
 import { purple } from "@material-ui/core/colors";
 import shadows from "@material-ui/core/styles/shadows";
-import IUser from "../interfaces/IUser";
 import { useDispatch, useSelector } from "react-redux";
-import { addUser } from "../store/actions";
-import IUsers from "../interfaces/IUsers";
+import { addUser} from "../actions/userActions";
+import axios, {AxiosResponse} from "axios";
+import { IUser } from "../actions/userActionType";
 
 const useStyles = makeStyles({
   mainContainer: {
@@ -18,7 +18,7 @@ const useStyles = makeStyles({
     //  flexDirection: "column",
   },
   warp: {
-    color: "white",
+    color: "black",
     display: "grid",
     fontSize: "25px",
     placeItems: "center",
@@ -47,8 +47,8 @@ const SignUp: React.FC<NewUserInputProps> = ({ addUser }) => {
   const dispatch = useDispatch();
   const ref = useRef();
   const classes = useStyles();
-  const allUser = useSelector<IUsers, IUsers["allUsers"]>(
-    (state) => state.allUsers
+  const allUser = useSelector<Array<IUser>>(
+    (state) => state
   );
   const [user, setUser] = useState<IUser>({
     email: "",
@@ -63,13 +63,11 @@ const SignUp: React.FC<NewUserInputProps> = ({ addUser }) => {
   const [enteredTextPassword, setenteredTextPassword] = useState("");
   const [isAdmin, setISAdmin] = useState(false);
 
-  const onAddUserClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const onAddUserClick =  (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-
     console.log("user is: ", user);
     // dispatch({type:"ADD_USER",payload:{fullName:"shahar",email:"shahar@webiks.com",password:"123445",admin:true}})
-    dispatch(addUser(user));
-    console.log("Allusers is: ", allUser);
+     addUser(user);
     setenteredTextPassword("");
     setenteredTextUserName("");
     setenteredTextEmail("");
@@ -83,6 +81,11 @@ const SignUp: React.FC<NewUserInputProps> = ({ addUser }) => {
       ownMeetUp: [],
     });
   };
+  // @ts-ignore
+  useEffect(async () => {
+      const result: AxiosResponse<Array<IUser>> = await axios.get('http://localhost:3001/all-user',);
+    console.log("netnael ",result.data)
+  },[]);
 
   const updateUserDetails = (event: React.ChangeEvent<HTMLInputElement>) => {
     switch (event.target.id) {
@@ -111,10 +114,11 @@ const SignUp: React.FC<NewUserInputProps> = ({ addUser }) => {
   };
 
   return (
+
     <form className={classes.warp}>
       <fieldset>
         <fieldset>
-          <label htmlFor="fullName">FullName:</label>
+          <label htmlFor="fullName">שם מלא:</label>
           <input
             type="text"
             value={enteredTextUserName}
@@ -122,7 +126,7 @@ const SignUp: React.FC<NewUserInputProps> = ({ addUser }) => {
             id="fullName"
           />
         </fieldset>
-        <label htmlFor="email">Email:</label>
+        <label htmlFor="email">מייל:</label>
         <input
           type="text"
           value={enteredTextEmail}
@@ -131,7 +135,7 @@ const SignUp: React.FC<NewUserInputProps> = ({ addUser }) => {
         />
       </fieldset>
       <fieldset>
-        <label htmlFor="password">Password:</label>
+        <label htmlFor="password">סיסמא:</label>
         <input
           type="password"
           value={enteredTextPassword}
@@ -140,7 +144,7 @@ const SignUp: React.FC<NewUserInputProps> = ({ addUser }) => {
         />
       </fieldset>
       <fieldset>
-        <label htmlFor="admin">Admin:</label>
+        <label htmlFor="admin">מנהל?</label>
         <input
           type="checkbox"
           checked={isAdmin}
@@ -149,9 +153,10 @@ const SignUp: React.FC<NewUserInputProps> = ({ addUser }) => {
         />
       </fieldset>
       <button type="submit" onClick={(e) => onAddUserClick(e)}>
-        {" "}
-        Sign up
+
+        הירשם
       </button>
+
     </form>
   );
 };

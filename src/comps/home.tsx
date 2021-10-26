@@ -7,7 +7,7 @@ import Button from 'material-ui/Button';
 import Button from "@mui/material/Button";
 import { AddCircleOutlined } from "@material-ui/icons";
 import Create from "./create";
-import IMeetUp from "../interfaces/IMeetUp";
+import {IMeetUp} from "../actions/meetUpActionType";
 
 const Home: React.FC = () => {
   const [meetUps, setMeetUps] = useState<Array<IMeetUp>>();
@@ -32,10 +32,10 @@ const Home: React.FC = () => {
           fontSize: "20px",
         }}
         variant="contained"
-        endIcon={<AddCircleOutlined style={{ fontSize: "100px" }} />}
+        endIcon={<AddCircleOutlined style={{ fontSize: "80px" }} />}
         color="success"
       >
-        יצירת מייטאפ
+
       </Button>
       <Create openPopup={openPopup} SetopenPopup={setOpenPopup} />
     </div>

@@ -1,5 +1,5 @@
-import IMeetUp from "../interfaces/IMeetUp";
-import IUser from "../interfaces/IUser";
+import { IUser } from "../actions/userActionType";
+import {IMeetUp} from "../actions/meetUpActionType";
 
 export enum EUsermode{
     admin = "admin",
@@ -8,7 +8,7 @@ export enum EUsermode{
 }
 
 export interface Istore{
-    // meetups : Array<IMeetUp>,
+     // meetups : Array<IMeetUp>,
     users : Array<IUser>,
     userMode: EUsermode,
 }

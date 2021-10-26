@@ -5,8 +5,6 @@ import App from './App';
 import {combineReducers, createStore} from "redux";
 import {Provider} from "react-redux";
 import {EUsermode, Istore} from "./store/interfacses";
-import IMeetUp from "./interfaces/IMeetUp";
-import IUser from "./interfaces/IUser";
 import {store} from "./store/store";
 
 
@@ -15,9 +13,14 @@ import {store} from "./store/store";
 // const store =  createStore(combineReducers({main:reducer})) ;
 
 ReactDOM.render(
+
     <Provider store={store}>
+        <body dir="rtl">
         <App />
+        </body>
     </Provider>
+
+
     ,document.getElementById('root')
 );
 
