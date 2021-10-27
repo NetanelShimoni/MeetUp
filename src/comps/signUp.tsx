@@ -74,10 +74,7 @@ const SignUp: React.FC = () => {
    // dispatch(await addUser(user))
     console.log(store.getState())
 
-    if (isAdmin) {
-      store.dispatch({type: UPDATE_MODE, payload: EUsermode.admin})
-      console.log(store.getState())
-    }
+
     setenteredTextPassword("");
     setenteredTextUserName("");
     setenteredTextEmail("");
