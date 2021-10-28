@@ -10,7 +10,6 @@ import {store} from "./store/store";
 
 
 
-// const store =  createStore(combineReducers({main:reducer})) ;
 
 ReactDOM.render(
 

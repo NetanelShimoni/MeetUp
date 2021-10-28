@@ -67,12 +67,7 @@ const SignUp: React.FC = () => {
 
   const   onAddUserClick =    (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    console.log("user is: ", user);
-    // dispatch({type:"ADD_USER",payload:{fullName:"shahar",email:"shahar@webiks.com",password:"123445",admin:true}})
        dispatch(addUser(user));
-    //store.dispatch({type:ADD_USER,payload:user})
-   // dispatch(await addUser(user))
-    console.log(store.getState())
 
 
     setenteredTextPassword("");
@@ -91,7 +86,6 @@ const SignUp: React.FC = () => {
   // @ts-ignore
   useEffect(async () => {
        const result: AxiosResponse<Array<IUser>> = await axios.get('http://localhost:3001/all-user',);
-    console.log("netnael ",result.data)
   },[]);
 
   const updateUserDetails = (event: React.ChangeEvent<HTMLInputElement>) => {
