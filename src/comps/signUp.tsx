@@ -42,9 +42,6 @@ const useStyles = makeStyles({
   },
 });
 
-// export interface NewUserInputProps {
-//   addUser(user: IUser): void;
-// }
 const SignUp: React.FC = () => {
   const dispatch = useDispatch();
   const ref = useRef();

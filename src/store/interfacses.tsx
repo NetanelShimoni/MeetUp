@@ -29,7 +29,6 @@ export enum EUsermode {
 }
 
 export interface Istore {
-  // meetups : Array<IMeetUp>,
   users: Array<IUser>;
   userMode: EUsermode;
 }

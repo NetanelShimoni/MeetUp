@@ -13,7 +13,6 @@ const reducer = (state: Istore = initState, action: IAction): Istore => {
     case Actions.UPDATE_MODE:
       return { ...state, userMode: action.payload } as Istore;
     default:
-      //console.log("store is :     ",store.getState())
       return state;
   }
 };

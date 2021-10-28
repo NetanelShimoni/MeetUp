@@ -9,7 +9,6 @@ export const addUser = (newUser: IUser) => async (dispatch: Dispatch) => {
     const res = axios
       .post("http://localhost:3001/add-user", newUser)
       .then(function (result) {
-        console.log(result.status);
       });
     dispatch({
       type: Actions.ADD_USER,
