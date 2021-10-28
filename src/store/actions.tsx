@@ -20,9 +20,11 @@ export const addUser=(newUser: IUser)=> async (dispatch:Dispatch) => {
                 type: Actions.ADD_USER,
                 payload: newUser
             })
+        console.log("ADD USER OR!!!!!",store.getState())
+
         if (newUser.isAdmin) {
             dispatch({type: UPDATE_MODE, payload: EUsermode.admin})
-            console.log(store.getState())
+            console.log("user is admin!!!",store.getState())
         }
     }catch (e) {
         console.log("erooree",e)

@@ -1,3 +1,5 @@
+const dotenv = require('dotenv')
+
 const express = require("express");
 const app = express();
 const mongoose = require('mongoose');
@@ -10,9 +12,12 @@ app.use(cors({
     origin:"http://localhost:3000"
 }))
 
+dotenv.config()
+
+console.log(process.env.HELLO)
 
 //connect to MongoDB
-const dbURI ='mongodb+srv://netanelsh0:netanelsh0@cluster0.w5ult.mongodb.net/usersDB?retryWrites=true&w=majority'
+const dbURI =process.env.URL_MONGO
 mongoose.connect(dbURI,{useNewUrlParser:true,useUnifiedTopology:true})
     .then((result) => app.listen(3001) )
     .catch((err)=>
@@ -21,13 +26,11 @@ mongoose.connect(dbURI,{useNewUrlParser:true,useUnifiedTopology:true})
 
 
 
-
-app.get("/",function (reqq,res){
-    res.send("Express here!!")
+app.get("/",function (req,res){
+    res.send("Express here!!"+ process.env.HELLO)
 })
 
 app.get('/all-user' ,(req,res)=> {
-    console.log("dddddddd")
     User.find()
         .then((result)=> {
             res.send(result)
@@ -40,14 +43,7 @@ app.get('/all-user' ,(req,res)=> {
 
 app.post('/add-user',(req,res) => {
 
-    // const user = new User ({
-    //     fullName:"aaa",
-    //     email: "aaaaa",
-    //     password: "aaaaa",
-    //     isAdmin: false,
-    //     meetUps:[],
-    //     ownMeetUp:[]
-    // });
+
 
     const user = new User ({
         fullName:req.body.fullName,
@@ -66,6 +62,3 @@ app.post('/add-user',(req,res) => {
         })
 })
 
-// , function (){
-//     console.log("working!")
-// })
