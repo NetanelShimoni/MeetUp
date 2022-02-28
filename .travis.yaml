@@ -1,0 +1,18 @@
+language: node_js
+node_js:
+  - 16
+cache: npm
+
+install:
+  - npm i
+
+script:
+  - npm run build
+
+
+deploy:
+  provider: build
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  on:
+    branch: main
