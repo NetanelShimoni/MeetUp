@@ -26,19 +26,6 @@ const Navbar = () => {
         onClick={() => setIsMobile(false)}
       ></ul>
       <ul className="nav-links">
-        <Link to="/about" className="about">
-          <li>אודות</li>
-        </Link>
-
-        <Link to="/lastMeetUp" className="lastmeetup">
-          <li>מייטאפ אחרון</li>
-        </Link>
-
-        <Link to="/" className="home">
-          <li>
-            <HomeSharp></HomeSharp>
-          </li>
-        </Link>
         <Link to="/login" className="login">
           <li>
             <LogoutIcon
@@ -46,6 +33,18 @@ const Navbar = () => {
               fontSize={"large"}
             ></LogoutIcon>
           </li>
+        </Link>
+        <Link to="/" className="home">
+          <li>
+            <HomeSharp></HomeSharp>
+          </li>
+        </Link>
+        <Link to="/lastMeetUp" className="lastmeetup">
+          <li>מייטאפ אחרון</li>
+        </Link>
+
+        <Link to="/about" className="about">
+          <li>אודות</li>
         </Link>
       </ul>
       <button className="mobile-menu-icon">

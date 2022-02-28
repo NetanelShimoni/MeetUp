@@ -1,7 +1,6 @@
-import {createStore} from "redux";
-import IMeetUp from "../interfaces/IMeetUp";
-import IUser from "../interfaces/IUser";
-import {EUsermode, Istore, jsonFormat} from "./interfacses";
-import {UserReducer} from "./userReducer";
+import { createStore, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
 
-export const store = createStore(UserReducer)
+import Reducer from "./reducer";
+
+export const store = createStore(Reducer, applyMiddleware(thunk));

@@ -1,9 +1,6 @@
-import React, {useState} from "react";
-import {Link} from 'react-router-dom'
+import React, { useState } from "react";
 
-const LastMeetUp : React.FC = () => {
-    return (
-        <div>LastMeetUp</div>
-    )
-}
+const LastMeetUp: React.FC = () => {
+  return <div>LastMeetUp</div>;
+};
 export default LastMeetUp;

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -9,8 +8,6 @@ import Typography from "@mui/material/Typography";
 
 const About: React.FC = () => {
   return (
-    // <Card variant="outlined"></Card>
-    // <div className="aboutcontainer" style={{margin:"auto"} }>
     <Card
       sx={{ maxWidth: 500, borderRadius: "23px" }}
       style={{ margin: "auto", alignItems: "center", verticalAlign: "middle" }}
@@ -33,10 +30,8 @@ const About: React.FC = () => {
       </CardContent>
       <CardActions>
         <Button size="large">צור קשר</Button>
-        {/*<Button size="small">Learn More</Button>*/}
       </CardActions>
     </Card>
-    // </div>
   );
 };
 export default About;

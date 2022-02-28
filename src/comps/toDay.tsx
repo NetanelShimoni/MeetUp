@@ -1,9 +1,6 @@
-import React, {useState} from "react";
-import {Link} from 'react-router-dom'
+import React, { useState } from "react";
 
-const ToDay : React.FC = () => {
-    return (
-        <div>Today</div>
-    )
-}
+const ToDay: React.FC = () => {
+  return <div>Today</div>;
+};
 export default ToDay;
